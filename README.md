@@ -2,6 +2,12 @@
 
 A tiny docker image for JavaScript with major stream workflow CI (like jenkins), Only 72MB in size! 🎉🎉🎉
 
+all command
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker build .
+docker build -t me/alpine-nginx-nodejs .
+docker run --publish 80:8080 --detach --name node-nginx
 
 The ```latest``` tag is currently:
 
