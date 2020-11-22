@@ -1,9 +1,7 @@
 
-FROM hoosin/alpine-nginx-nodejs:latest
+FROM me/alpine-nginx-nodejs:latest
 
-MAINTAINER hoosin <hoosin.git@gmail.cn>
-
-ENV APP_ROOT /home/example.hoosin.com
+ENV APP_ROOT /home/me
 ENV SRC_DIR ./node_modules ./public ./src
 ENV NGINX_STATIC /usr/share/nginx/html/
 ENV NGINX_CONF /etc/nginx/
@@ -14,8 +12,6 @@ COPY . $APP_ROOT
 RUN node -v \
     && npm -v \
     && yarn -v \
-    && yarn config set registry https://registry.npm.taobao.org \
-    && yarn config get registry \
     && yarn install --verbose \
     && yarn build \
     && cp -r nginx/* $NGINX_CONF \
